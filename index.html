@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Meme Maker — Free Meme Generator, No Watermark | S3eidat Tools</title>
+<meta name="description" content="Make classic top/bottom text memes in seconds: your own image or a blank canvas, draggable bold outlined text, any number of text boxes, PNG download. No watermark, nothing uploaded.">
+<meta property="og:title" content="Meme Maker — free meme generator, no watermark">
+<meta property="og:description" content="Classic top/bottom text memes with draggable text. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="meme-maker">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Meme Maker</h1>
+    <p>Classic top and bottom text memes in seconds. Use your own picture or a blank canvas, drag the text where you want it, download a PNG. No watermark.</p>
+  </section>
+
+  <div class="mm-grid">
+    <section class="card stack">
+      <div class="mm-stage checker" id="stage">
+        <canvas id="cv" tabindex="0" aria-label="Meme preview. Drag text to move it; arrow keys move the selected text."></canvas>
+      </div>
+      <div class="row">
+        <span class="faint grow">Drag text to move it. Click a text to edit it on the right.</span>
+        <button class="btn" id="copyImg"><svg class="i"><use href="#i-copy"/></svg>Copy image</button>
+        <button class="btn primary" id="save"><svg class="i"><use href="#i-download"/></svg>Download PNG</button>
+      </div>
+    </section>
+
+    <section class="card stack">
+      <label class="drop mm-drop" id="drop">
+        <input type="file" accept="image/*" hidden>
+        <svg class="i"><use href="#i-image"/></svg>
+        <b>Use your own image</b>
+        <span class="faint">drop, click or paste</span>
+      </label>
+      <div class="row">
+        <span class="lbl">or a blank canvas</span>
+        <input type="color" id="blankColor" value="#ffffff" aria-label="Blank canvas color">
+        <div class="seg" id="blank" role="group" aria-label="Blank canvas shape">
+          <button aria-pressed="false" data-v="1">1:1</button>
+          <button aria-pressed="false" data-v="1.3333">4:3</button>
+          <button aria-pressed="false" data-v="0.8">4:5</button>
+          <button aria-pressed="false" data-v="1.7778">16:9</button>
+        </div>
+      </div>
+
+      <div class="row between">
+        <h2>Text</h2>
+        <button class="btn small" id="add"><svg class="i"><use href="#i-plus"/></svg>Add text</button>
+      </div>
+      <div class="mm-texts" id="texts"></div>
+
+      <div class="stack mm-props" id="props">
+        <label class="field"><span class="row between"><span>Size</span><output class="mono" id="sv"></output></span>
+          <input type="range" id="size" min="3" max="25" step="0.5">
+        </label>
+        <div class="row">
+          <label class="field">Fill<input type="color" id="fill"></label>
+          <label class="field">Outline<input type="color" id="stroke"></label>
+          <label class="field grow"><span class="row between"><span>Outline width</span><output class="mono" id="wv"></output></span>
+            <input type="range" id="strokeW" min="0" max="20">
+          </label>
+        </div>
+        <div class="row">
+          <label class="check"><input type="checkbox" id="upper"> UPPERCASE</label>
+          <span class="grow"></span>
+          <button class="btn ghost small" id="del"><svg class="i"><use href="#i-trash"/></svg>Delete text</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
